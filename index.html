@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SIMEX — Definir Alíquota de ICMS e Emitir DAR (Protótipo)</title>
+
+<!-- Fonte e ícones reais do app (degradam bem sem internet: cai no fallback do CSS) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/primeicons/7.0.0/primeicons.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Header (espelha src/app/layout/private/components/header/header.component.html) -->
+  <header class="app-header">
+    <div class="header-left">
+      <button class="icon-btn icon-btn--ghost" id="btn-toggle-menu" aria-label="Menu">
+        <i class="pi pi-bars"></i>
+      </button>
+      <img src="assets/img/logo-simex-text-black.png" alt="Logo SIMEX/AP" class="header-logo">
+    </div>
+    <div class="header-right">
+      <span class="proto-badge">PROTÓTIPO — NÃO FUNCIONAL</span>
+      <div class="icon-btn icon-btn--ghost" aria-label="Notificações">
+        <i class="pi pi-bell"></i>
+      </div>
+      <div class="avatar">JR</div>
+    </div>
+  </header>
+
+  <div class="app-shell">
+
+    <!-- Sidebar (espelha sidebar.component.html) -->
+    <aside class="app-sidebar" id="sidebar">
+      <nav class="sidebar-menu">
+        <a class="sidebar-item" href="#"><i class="pi pi-home"></i><span>Dashboard</span></a>
+        <a class="sidebar-item" href="#"><i class="pi pi-users"></i><span>Cadastro Contribuinte</span></a>
+        <a class="sidebar-item sidebar-item--active" href="#"><i class="pi pi-box"></i><span>Processos de Importação</span></a>
+        <a class="sidebar-item" href="#"><i class="pi pi-sliders-h"></i><span>Parâmetros Fiscais</span></a>
+        <a class="sidebar-item" href="#"><i class="pi pi-chart-bar"></i><span>Monitoramento</span></a>
+        <a class="sidebar-item" href="#"><i class="pi pi-bell"></i><span>Notificações</span></a>
+      </nav>
+      <div class="sidebar-footer">
+        <hr class="divider">
+        <img src="assets/img/gov.png" alt="Governo do Amapá" class="sidebar-gov-logo">
+      </div>
+    </aside>
+
+    <main class="app-main" id="main-content">
+
+      <!-- Breadcrumb + Title -->
+      <nav class="breadcrumb">Processos de Importação <i class="pi pi-angle-right"></i> Nº 24BR0000007920 <i class="pi pi-angle-right"></i> <span>Definir Alíquota de ICMS e Emitir DAR</span></nav>
+      <h3 class="page-title">Definir Alíquota de ICMS e Emitir DAR</h3>
+
+      <!-- Contexto do processo -->
+      <div class="context-banner">
+        <div class="context-item"><span class="context-label">Processo</span><span class="context-value">24BR0000007920</span></div>
+        <div class="context-item"><span class="context-label">DUIMP</span><span class="context-value">24BR/0007920-07</span></div>
+        <div class="context-item"><span class="context-label">Importador</span><span class="context-value">FORD MOTOR COMPANY BRASIL LTDA</span></div>
+        <div class="context-item"><span class="context-label">Modalidade</span><span class="context-value">Importação Direta</span></div>
+        <div class="context-item"><span class="context-label">Status</span><span class="tag tag--warn">Aguardando Declaração do ICMS</span></div>
+      </div>
+
+      <!-- Card: Despesas Aduaneiras -->
+      <section class="card">
+        <div class="card-title-row">
+          <h4>Despesas Aduaneiras e AFRMM</h4>
+        </div>
+        <div class="card-body">
+          <div class="despesas-grid">
+            <table class="table table--plain">
+              <tbody>
+                <tr>
+                  <td class="label-cell">Adicional de Tarifa Aeroportuária (ATAERO)</td>
+                  <td><input type="text" class="input input--money" value="R$ 25,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Despesas com armazenagem</td>
+                  <td><input type="text" class="input input--money" value="R$ 10.000,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Tarifa com operações financeiras/cambiais/bancárias</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Estiva</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Capatazia no Destino (THD)</td>
+                  <td><input type="text" class="input input--money" value="R$ 200,50" disabled></td>
+                </tr>
+              </tbody>
+            </table>
+            <table class="table table--plain">
+              <tbody>
+                <tr>
+                  <td class="label-cell">Despesas com despachantes</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Despesas com administração porto/aeroporto</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Capatazia</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+                <tr>
+                  <td class="label-cell">Arqueação e Outras despesas aduaneiras não especificadas</td>
+                  <td><input type="text" class="input input--money" value="R$ 0,00" disabled></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="despesas-footer">
+            <div class="afrmm-box">
+              <label class="field-label">AFRMM (valor extraído da DUIMP)</label>
+              <div class="afrmm-row">
+                <input type="text" class="input input--money" value="R$ 4.970,91" disabled>
+                <button class="btn btn--outline btn--sm">Editar</button>
+                <button class="btn btn--primary btn--sm">Confirmar</button>
+              </div>
+            </div>
+            <div class="total-box">
+              <span class="total-label">Total de despesas aduaneiras</span>
+              <span class="total-value">R$ 10.225,50</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Filtro -->
+      <section class="card card--filter">
+        <form class="filter-form" onsubmit="return false;">
+          <div class="field">
+            <label class="field-label">Número Item</label>
+            <select class="input input--select" disabled><option>Todos</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label">Código NCM</label>
+            <select class="input input--select" disabled><option>Todos</option></select>
+          </div>
+          <div class="field">
+            <label class="field-label">Benefício Fiscal</label>
+            <select class="input input--select" disabled><option>Todos</option></select>
+          </div>
+          <div class="field field--actions">
+            <button type="button" class="btn btn--outline btn--sm" disabled>
+              <i class="pi pi-trash"></i> Limpar
+            </button>
+            <button type="button" class="btn btn--primary btn--sm" disabled>
+              <i class="pi pi-filter-fill"></i> Filtrar
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Card: Itens -->
+      <section class="card">
+        <div class="card-title-row">
+          <h4>Informações dos Itens</h4>
+        </div>
+        <div class="table-scroll">
+          <table class="table table--items" id="items-table">
+            <thead>
+              <tr>
+                <th></th>
+                <th>Item</th>
+                <th>Código NCM</th>
+                <th>Valor do Item (R$)</th>
+                <th>Despesas Rateio (R$)</th>
+                <th>AFRMM Rateio (R$)</th>
+                <th>Valor Total (R$)</th>
+                <th>Alíquota ICMS (%)</th>
+                <th>Base de Cálculo (R$)</th>
+                <th>ICMS Calculado (R$)</th>
+                <th>Benefício Fiscal</th>
+                <th>ICMS Devido (R$)</th>
+                <th>ICMS-ST Devido (R$)</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+
+              <!-- Item 1 -->
+              <tr class="row-item" data-row="1">
+                <td class="expand-cell"><button class="expand-btn" data-target="detail-1" aria-label="Expandir"><i class="pi pi-minus"></i></button></td>
+                <td>1</td>
+                <td>8517.60.00</td>
+                <td class="money" data-field="valorItem">814.840,63</td>
+                <td class="money" data-field="despesasRateio">10.225,50</td>
+                <td class="money" data-field="afrmmRateio">4.970,91</td>
+                <td class="money" data-field="valorTotal">830.037,04</td>
+                <td>
+                  <select class="input input--select input--aliquota" data-field="aliquota">
+                    <option value="20.5" selected>20,5</option>
+                    <option value="18">18,0</option>
+                    <option value="17">17,0</option>
+                    <option value="12">12,0</option>
+                    <option value="7">7,0</option>
+                    <option value="4">4,0 (Corredor)</option>
+                    <option value="1">1,0 (Corredor)</option>
+                    <option value="0">0,0 (Isento)</option>
+                  </select>
+                </td>
+                <td class="money" data-field="baseCalculo">1.044.071,75</td>
+                <td class="money money--calc" data-field="icmsCalculado">214.034,71</td>
+                <td>
+                  <select class="input input--select" data-field="beneficio">
+                    <option>Admissão Temporária</option>
+                    <option>Sem Benefício</option>
+                    <option>Drawback</option>
+                    <option>Importação dentro da ALCMS</option>
+                    <option>Corredor de Importação 4%</option>
+                    <option>Corredor de Importação 1%</option>
+                    <option>Decisão Judicial</option>
+                  </select>
+                </td>
+                <td class="money money--calc" data-field="icmsDevido">214.034,71</td>
+                <td class="money" data-field="icmsSt">—</td>
+                <td class="actions-cell">
+                  <button class="icon-btn icon-btn--sm" title="Editar" disabled><i class="pi pi-pen-to-square"></i></button>
+                  <button class="icon-btn icon-btn--sm" title="Detalhar" disabled><i class="pi pi-search"></i></button>
+                </td>
+              </tr>
+              <tr class="row-detail" id="detail-1">
+                <td></td>
+                <td colspan="13">
+                  <div class="detail-grid">
+                    <div><span class="detail-label">Valor Aduaneiro (CIF):</span> R$ 814.686,40</div>
+                    <div><span class="detail-label">IPI importação:</span> R$ 16.297,37</div>
+                    <div><span class="detail-label">COFINS importação:</span> R$ 78.826,50</div>
+                    <div><span class="detail-label">CIDE - Combustíveis importação:</span> R$ 0,00</div>
+                    <div><span class="detail-label">Multas a recolher:</span> R$ 0,00</div>
+                    <div><span class="detail-label">Taxa de utilização Siscomex:</span> R$ 154,23</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Item 2 -->
+              <tr class="row-item" data-row="2">
+                <td class="expand-cell"><button class="expand-btn" data-target="detail-2" aria-label="Expandir"><i class="pi pi-plus"></i></button></td>
+                <td>2</td>
+                <td>8541.10.22</td>
+                <td class="money" data-field="valorItem">8.263,95</td>
+                <td class="money" data-field="despesasRateio">0,00</td>
+                <td class="money" data-field="afrmmRateio">72,87</td>
+                <td class="money" data-field="valorTotal">8.336,81</td>
+                <td>
+                  <select class="input input--select input--aliquota" data-field="aliquota">
+                    <option value="20.5" selected>20,5</option>
+                    <option value="18">18,0</option>
+                    <option value="17">17,0</option>
+                    <option value="12">12,0</option>
+                    <option value="7">7,0</option>
+                    <option value="4">4,0 (Corredor)</option>
+                    <option value="1">1,0 (Corredor)</option>
+                    <option value="0">0,0 (Isento)</option>
+                  </select>
+                </td>
+                <td class="money" data-field="baseCalculo">10.486,56</td>
+                <td class="money money--calc" data-field="icmsCalculado">2.149,74</td>
+                <td>
+                  <select class="input input--select" data-field="beneficio">
+                    <option>Sem Benefício</option>
+                    <option>Admissão Temporária</option>
+                    <option>Drawback</option>
+                    <option>Importação dentro da ALCMS</option>
+                    <option>Corredor de Importação 4%</option>
+                    <option>Corredor de Importação 1%</option>
+                    <option>Decisão Judicial</option>
+                  </select>
+                </td>
+                <td class="money money--calc" data-field="icmsDevido">2.149,74</td>
+                <td class="money" data-field="icmsSt">Não</td>
+                <td class="actions-cell">
+                  <button class="icon-btn icon-btn--sm" title="Editar" disabled><i class="pi pi-pen-to-square"></i></button>
+                  <button class="icon-btn icon-btn--sm" title="Detalhar" disabled><i class="pi pi-search"></i></button>
+                </td>
+              </tr>
+              <tr class="row-detail" id="detail-2" style="display:none;">
+                <td></td>
+                <td colspan="13">
+                  <div class="detail-grid">
+                    <div><span class="detail-label">Valor Aduaneiro (CIF):</span> R$ 5.814,74</div>
+                    <div><span class="detail-label">IPI importação:</span> R$ 116,29</div>
+                    <div><span class="detail-label">COFINS importação:</span> R$ 561,12</div>
+                    <div><span class="detail-label">CIDE - Combustíveis importação:</span> R$ 721,35</div>
+                    <div><span class="detail-label">Multas a recolher:</span> R$ 975,22</div>
+                    <div><span class="detail-label">Taxa de utilização Siscomex:</span> R$ 75,22</div>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- Item 3 -->
+              <tr class="row-item" data-row="3">
+                <td class="expand-cell"><button class="expand-btn" data-target="detail-3" aria-label="Expandir"><i class="pi pi-plus"></i></button></td>
+                <td>3</td>
+                <td>8541.10.22</td>
+                <td class="money" data-field="valorItem">8.679,79</td>
+                <td class="money" data-field="despesasRateio">0,00</td>
+                <td class="money" data-field="afrmmRateio">72,87</td>
+                <td class="money" data-field="valorTotal">8.752,66</td>
+                <td>
+                  <select class="input input--select input--aliquota" data-field="aliquota">
+                    <option value="20.5" selected>20,5</option>
+                    <option value="18">18,0</option>
+                    <option value="17">17,0</option>
+                    <option value="12">12,0</option>
+                    <option value="7">7,0</option>
+                    <option value="4">4,0 (Corredor)</option>
+                    <option value="1">1,0 (Corredor)</option>
+                    <option value="0">0,0 (Isento)</option>
+                  </select>
+                </td>
+                <td class="money" data-field="baseCalculo">11.009,63</td>
+                <td class="money money--calc" data-field="icmsCalculado">2.256,97</td>
+                <td>
+                  <select class="input input--select" data-field="beneficio">
+                    <option>Sem Benefício</option>
+                    <option>Admissão Temporária</option>
+                    <option>Drawback</option>
+                    <option>Importação dentro da ALCMS</option>
+                    <option>Corredor de Importação 4%</option>
+                    <option>Corredor de Importação 1%</option>
+                    <option>Decisão Judicial</option>
+                  </select>
+                </td>
+                <td class="money money--calc" data-field="icmsDevido">2.256,97</td>
+                <td class="money" data-field="icmsSt">Não</td>
+                <td class="actions-cell">
+                  <button class="icon-btn icon-btn--sm" title="Editar" disabled><i class="pi pi-pen-to-square"></i></button>
+                  <button class="icon-btn icon-btn--sm" title="Detalhar" disabled><i class="pi pi-search"></i></button>
+                </td>
+              </tr>
+              <tr class="row-detail" id="detail-3" style="display:none;">
+                <td></td>
+                <td colspan="13">
+                  <div class="detail-grid">
+                    <div><span class="detail-label">Valor Aduaneiro (CIF):</span> R$ 6.107,33</div>
+                    <div><span class="detail-label">IPI importação:</span> R$ 122,15</div>
+                    <div><span class="detail-label">COFINS importação:</span> R$ 589,36</div>
+                    <div><span class="detail-label">CIDE - Combustíveis importação:</span> R$ 757,65</div>
+                    <div><span class="detail-label">Multas a recolher:</span> R$ 1.024,30</div>
+                    <div><span class="detail-label">Taxa de utilização Siscomex:</span> R$ 79,01</div>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <hr class="divider divider--footer">
+        <div class="totals-footer">
+          <div class="totals-row"><span>Total de ICMS Importação devido:</span> <strong id="total-icms">R$ 218.441,42</strong></div>
+          <div class="totals-row"><span>Total de ICMS-ST devido:</span> <strong id="total-st">R$ 0,00</strong></div>
+        </div>
+      </section>
+
+      <!-- Justificativa de alteração do cálculo -->
+      <section class="card card--attention" id="justificativa-card" style="display:none;">
+        <div class="card-title-row card-title-row--between">
+          <h4>Justificativa da Alteração</h4>
+          <span class="tag tag--warn">Cálculo alterado pelo contribuinte</span>
+        </div>
+        <p class="helper-text">Informe o motivo da alteração realizada em alíquota ou benefício fiscal. Esta justificativa deve compor o histórico do processo para análise posterior do Fisco.</p>
+        <textarea class="input textarea" id="justificativa-alteracao" rows="4" placeholder="Ex.: alteração da alíquota conforme enquadramento fiscal informado pelo contribuinte..."></textarea>
+      </section>
+
+      <!-- Resumo da declaração antes da emissão -->
+      <section class="card card--summary">
+        <div class="card-title-row card-title-row--between">
+          <h4>Resumo da Declaração</h4>
+          <button class="btn btn--outline btn--sm" id="btn-memoria-calculo" type="button">
+            <i class="pi pi-calculator"></i> Memória de Cálculo
+          </button>
+        </div>
+        <div class="summary-grid">
+          <div class="summary-item"><span>ICMS Importação</span><strong id="summary-icms">R$ 218.441,42</strong></div>
+          <div class="summary-item"><span>ICMS Antecipação/ST</span><strong id="summary-st">R$ 0,00</strong></div>
+          <div class="summary-item summary-item--total"><span>Valor total a recolher</span><strong id="summary-total">R$ 218.441,42</strong></div>
+        </div>
+        <p class="helper-text">Resumo exibido antes da emissão para conferência final dos valores que serão enviados à geração do DAR.</p>
+      </section>
+
+      <!-- Status do DAR (HU091) -->
+      <section class="card card--status" id="dar-status-card" style="display:none;">
+        <div class="card-title-row">
+          <h4>Status do DAR</h4>
+        </div>
+        <div class="card-body">
+          <div class="dar-status-row">
+            <span class="tag tag--warn" id="dar-status-tag">Aguardando Pagamento</span>
+            <span class="dar-status-text">DAR nº <strong id="dar-numero">2026000045123</strong> emitido em <strong>23/03/2026</strong> — vencimento em <strong>02/04/2026</strong></span>
+          </div>
+          <p class="dar-status-note">Este painel simula o monitoramento automático de pagamento (HU091) — a verificação real de baixa dependeria de integração com o sistema de arrecadação do Estado.</p>
+        </div>
+      </section>
+
+      <!-- Ações -->
+      <div class="actions-bar">
+        <button class="btn btn--outline" disabled>Alíquotas Itens Selecionados</button>
+        <button class="btn btn--outline" disabled>Benefício Itens Selecionados</button>
+        <div class="spacer"></div>
+        <button class="btn btn--ghost" disabled>Voltar</button>
+        <button class="btn btn--outline" disabled>Salvar Rascunho</button>
+        <button class="btn btn--primary" id="btn-emitir-dar">
+          <i class="pi pi-file-pdf"></i> Emitir DAR
+        </button>
+      </div>
+
+      <p class="disclaimer">Protótipo estático para reunião de alinhamento — dados fictícios, cálculo de ICMS ilustrativo (Base × Alíquota). Regra de negócio final ainda depende de validação com o Fisco (SEFAZ-AP).</p>
+
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modal-memoria" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-memoria-title">
+      <div class="modal-header">
+        <h4 id="modal-memoria-title">Memória de Cálculo</h4>
+        <button class="icon-btn icon-btn--sm" id="btn-fechar-memoria" type="button" aria-label="Fechar"><i class="pi pi-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <p class="helper-text">Composição demonstrativa da base do ICMS. Os valores são fictícios e devem ser validados com a regra fiscal da SEFAZ-AP.</p>
+        <table class="table table--memory">
+          <tbody>
+            <tr><td>Valor Aduaneiro / CIF</td><td>R$ 826.608,47</td></tr>
+            <tr><td>Despesas aduaneiras</td><td>R$ 10.225,50</td></tr>
+            <tr><td>AFRMM</td><td>R$ 5.116,65</td></tr>
+            <tr><td>IPI Importação</td><td>R$ 16.535,81</td></tr>
+            <tr><td>PIS/COFINS Importação</td><td>R$ 79.976,98</td></tr>
+            <tr><td>Taxa Siscomex / demais acréscimos</td><td>R$ 308,46</td></tr>
+            <tr class="memory-total"><td>Base de cálculo consolidada</td><td>R$ 1.065.567,94</td></tr>
+            <tr><td>Alíquota aplicada</td><td>20,5%</td></tr>
+            <tr class="memory-total"><td>ICMS calculado</td><td id="modal-icms-total">R$ 218.441,42</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--primary" id="btn-ok-memoria" type="button">Entendi</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="modal-confirmar-dar" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-dar-title">
+      <div class="modal-header">
+        <h4 id="modal-dar-title">Confirmar emissão do DAR</h4>
+        <button class="icon-btn icon-btn--sm" id="btn-cancelar-dar-x" type="button" aria-label="Fechar"><i class="pi pi-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <p>Após a emissão do DAR, os valores declarados devem ficar bloqueados ou exigir cancelamento/novo DAR, conforme regra a ser confirmada com o cliente.</p>
+        <div class="summary-grid summary-grid--compact">
+          <div class="summary-item summary-item--total"><span>Total a recolher</span><strong id="modal-total-dar">R$ 218.441,42</strong></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--ghost" id="btn-cancelar-dar" type="button">Cancelar</button>
+        <button class="btn btn--primary" id="btn-confirmar-dar" type="button"><i class="pi pi-file-pdf"></i> Confirmar emissão</button>
+      </div>
+    </div>
+  </div>
+
+<script src="script.js"></script>
+</body>
+</html>
