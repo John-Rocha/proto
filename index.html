@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SIMEX — Definir Alíquota de ICMS e Emitir DAR (Protótipo)</title>
+<title>SIMEX — Protótipo para Homologação de Requisitos</title>
 
 <!-- Fonte e ícones reais do app (degradam bem sem internet: cai no fallback do CSS) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="watermark" aria-hidden="true">Uso exclusivo da SEFAZ/AP</div>
 
   <!-- Header (espelha src/app/layout/private/components/header/header.component.html) -->
   <header class="app-header">
@@ -23,7 +24,7 @@
       <img src="assets/img/logo-simex-text-black.png" alt="Logo SIMEX/AP" class="header-logo">
     </div>
     <div class="header-right">
-      <span class="proto-badge">PROTÓTIPO — NÃO FUNCIONAL</span>
+      <span class="proto-badge">Protótipo para Homologação de Requisitos</span>
       <div class="icon-btn icon-btn--ghost" aria-label="Notificações">
         <i class="pi pi-bell"></i>
       </div>
@@ -54,6 +55,29 @@
       <!-- Breadcrumb + Title -->
       <nav class="breadcrumb">Processos de Importação <i class="pi pi-angle-right"></i> Nº 24BR0000007920 <i class="pi pi-angle-right"></i> <span>Definir Alíquota de ICMS e Emitir DAR</span></nav>
       <h3 class="page-title">Definir Alíquota de ICMS e Emitir DAR</h3>
+
+      <section class="prototype-meta" aria-label="Informações do protótipo">
+        <div>
+          <span class="meta-label">Projeto</span>
+          <strong>SIMEX-AP</strong>
+        </div>
+        <div>
+          <span class="meta-label">Sprint</span>
+          <strong>Sprint 9</strong>
+        </div>
+        <div>
+          <span class="meta-label">Versão</span>
+          <strong>v0.5</strong>
+        </div>
+        <div>
+          <span class="meta-label">Revisão</span>
+          <strong>Rev. 04 — 08/07/2026</strong>
+        </div>
+        <div>
+          <span class="meta-label">Status</span>
+          <strong>Em validação funcional</strong>
+        </div>
+      </section>
 
       <!-- Contexto do processo -->
       <div class="context-banner">
@@ -407,6 +431,9 @@
       <div class="actions-bar">
         <button class="btn btn--outline" disabled>Alíquotas Itens Selecionados</button>
         <button class="btn btn--outline" disabled>Benefício Itens Selecionados</button>
+        <button class="btn btn--outline" id="btn-historico-alteracoes" type="button">
+          <i class="pi pi-history"></i> Histórico de Alterações
+        </button>
         <div class="spacer"></div>
         <button class="btn btn--ghost" disabled>Voltar</button>
         <button class="btn btn--outline" disabled>Salvar Rascunho</button>
@@ -415,7 +442,17 @@
         </button>
       </div>
 
-      <p class="disclaimer">Protótipo estático para reunião de alinhamento — dados fictícios, cálculo de ICMS ilustrativo (Base × Alíquota). Regra de negócio final ainda depende de validação com o Fisco (SEFAZ-AP).</p>
+      <footer class="prototype-footer">
+        <div>
+          <strong>SIMEX-AP — Protótipo Sprint 9</strong>
+          <span>Versão 0.5 • Revisão 04 • 08/07/2026</span>
+        </div>
+        <div>
+          <strong>Aprovação do cliente</strong>
+          <span>☐ Aprovado &nbsp;&nbsp; ☐ Ajustes solicitados</span>
+        </div>
+        <p>Dados fictícios. Cálculo de ICMS ilustrativo. Regra de negócio final depende de validação do Fisco da SEFAZ-AP.</p>
+      </footer>
 
     </main>
   </div>
@@ -463,6 +500,28 @@
       <div class="modal-footer">
         <button class="btn btn--ghost" id="btn-cancelar-dar" type="button">Cancelar</button>
         <button class="btn btn--primary" id="btn-confirmar-dar" type="button"><i class="pi pi-file-pdf"></i> Confirmar emissão</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal-backdrop" id="modal-historico" aria-hidden="true">
+    <div class="modal modal--wide" role="dialog" aria-modal="true" aria-labelledby="modal-historico-title">
+      <div class="modal-header">
+        <h4 id="modal-historico-title">Histórico de Alterações do Protótipo</h4>
+        <button class="icon-btn icon-btn--sm" id="btn-fechar-historico" type="button" aria-label="Fechar"><i class="pi pi-times"></i></button>
+      </div>
+      <div class="modal-body">
+        <ol class="history-list">
+          <li><strong>v0.1</strong><span>Estrutura inicial da tela de conferência de ICMS e emissão de DAR.</span></li>
+          <li><strong>v0.2</strong><span>Inclusão da memória de cálculo e confirmação antes da emissão do DAR.</span></li>
+          <li><strong>v0.3</strong><span>Inclusão da justificativa obrigatória quando houver alteração de alíquota ou benefício fiscal.</span></li>
+          <li><strong>v0.4</strong><span>Remoção dos campos de FUNCEP (Fundo Estadual de Combate e Erradicação da Pobreza) e inclusão da opção Decisão Judicial no benefício fiscal.</span></li>
+          <li><strong>v0.5</strong><span>Ajustes para publicação pública: identificação de versão, revisão, status, rodapé institucional, histórico de alterações e marca d’água discreta.</span></li>
+        </ol>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn--primary" id="btn-ok-historico" type="button">Fechar</button>
       </div>
     </div>
   </div>
