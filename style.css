@@ -342,6 +342,14 @@ body {
 }
 .totals-row { display: flex; gap: 0.75rem; font-size: 0.85rem; }
 .totals-row strong { min-width: 130px; text-align: right; color: var(--primary-600); }
+.totals-row--total {
+  margin-top: 0.4rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--gray-200);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+.totals-row--total strong { color: var(--primary-700); font-size: 1.05rem; }
 
 /* Tags */
 .tag {

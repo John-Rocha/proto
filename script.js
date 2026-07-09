@@ -37,6 +37,7 @@ function recalcTotals() {
 
   document.getElementById('total-icms').textContent = 'R$ ' + formatBRL(totalIcms);
   document.getElementById('total-st').textContent = 'R$ ' + formatBRL(totalSt);
+  document.getElementById('total-geral').textContent = 'R$ ' + formatBRL(total);
 
   document.getElementById('summary-icms').textContent = 'R$ ' + formatBRL(totalIcms);
   document.getElementById('summary-st').textContent = 'R$ ' + formatBRL(totalSt);
