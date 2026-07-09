@@ -377,8 +377,31 @@ body {
 }
 .actions-bar .spacer { flex: 1; }
 
-.disclaimer {
-  margin-top: 1.5rem;
+.prototype-footer {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem 2rem;
+  border-top: 1px solid var(--gray-200);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+}
+.prototype-footer > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+.prototype-footer strong {
+  font-size: 0.85rem;
+  color: var(--gray-800);
+}
+.prototype-footer > div span {
+  font-size: 0.78rem;
+  color: var(--gray-600);
+}
+.prototype-footer p {
+  width: 100%;
+  margin: 0.5rem 0 0;
   font-size: 0.75rem;
   color: var(--gray-400);
   text-align: center;
