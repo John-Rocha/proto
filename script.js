@@ -131,6 +131,15 @@ function init() {
     mainContent.classList.toggle('expanded');
   });
 
+  // Toggle do grupo "Parâmetros Fiscais" no menu.
+  const btnToggleParametrosFiscais = document.getElementById('btn-toggle-parametros-fiscais');
+  const submenuParametrosFiscais = document.getElementById('submenu-parametros-fiscais');
+  btnToggleParametrosFiscais?.addEventListener('click', () => {
+    const expanded = btnToggleParametrosFiscais.getAttribute('aria-expanded') === 'true';
+    btnToggleParametrosFiscais.setAttribute('aria-expanded', String(!expanded));
+    submenuParametrosFiscais.classList.toggle('collapsed', expanded);
+  });
+
   recalcTotals();
 }
 

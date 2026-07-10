@@ -58,7 +58,7 @@ body {
   align-items: center;
   gap: 1rem;
 }
-.header-logo { height: 2.5rem; width: auto; }
+.header-logo { height: 3.1rem; width: auto; }
 .proto-badge {
   background: #fff;
   color: var(--primary-700);
@@ -139,9 +139,35 @@ body {
   font-size: 0.85rem;
   white-space: nowrap;
 }
-.sidebar-item i { font-size: 1rem; width: 1.1rem; text-align: center; }
+.sidebar-item i { font-size: 1rem; width: 1.1rem; text-align: center; flex-shrink: 0; }
 .sidebar-item:hover { background: var(--primary-50); color: var(--primary-500); }
 .sidebar-item--active { background: var(--primary-50); color: var(--primary-500); font-weight: 700; }
+
+.sidebar-item--group {
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font);
+}
+.sidebar-item__chevron {
+  margin-left: auto;
+  font-size: 0.7rem !important;
+  width: auto !important;
+  transition: transform 0.2s ease;
+}
+.sidebar-item--group[aria-expanded="false"] .sidebar-item__chevron { transform: rotate(-90deg); }
+
+.sidebar-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow: hidden;
+}
+.sidebar-submenu.collapsed { display: none; }
+.sidebar-item--sub { padding-left: 2.1rem; font-size: 0.82rem; }
+.app-sidebar.collapsed .sidebar-item--group .sidebar-item__chevron,
+.app-sidebar.collapsed .sidebar-submenu { display: none; }
 
 .sidebar-footer { padding-bottom: 1rem; }
 .sidebar-gov-logo { display: block; width: 6rem; margin: 1rem auto 0; }

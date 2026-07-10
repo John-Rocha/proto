@@ -21,7 +21,7 @@
       <button class="icon-btn icon-btn--ghost" id="btn-toggle-menu" aria-label="Menu">
         <i class="pi pi-bars"></i>
       </button>
-      <img src="assets/img/logo-simex-text-black.png" alt="Logo SIMEX/AP" class="header-logo">
+      <img src="assets/img/logo-lg.png" alt="Logo SIMEX/AP" class="header-logo">
     </div>
     <div class="header-right">
       <span class="proto-badge">Protótipo para Homologação de Requisitos</span>
@@ -37,12 +37,20 @@
     <!-- Sidebar (espelha sidebar.component.html) -->
     <aside class="app-sidebar" id="sidebar">
       <nav class="sidebar-menu">
-        <a class="sidebar-item" href="#"><i class="pi pi-home"></i><span>Dashboard</span></a>
-        <a class="sidebar-item" href="#"><i class="pi pi-users"></i><span>Cadastro Contribuinte</span></a>
-        <a class="sidebar-item sidebar-item--active" href="#"><i class="pi pi-box"></i><span>Processos de Importação</span></a>
-        <a class="sidebar-item" href="#"><i class="pi pi-sliders-h"></i><span>Parâmetros Fiscais</span></a>
-        <a class="sidebar-item" href="#"><i class="pi pi-chart-bar"></i><span>Monitoramento</span></a>
-        <a class="sidebar-item" href="#"><i class="pi pi-bell"></i><span>Notificações</span></a>
+        <a class="sidebar-item" href="#"><i class="pi pi-home"></i><span>Início</span></a>
+
+        <button class="sidebar-item sidebar-item--group" id="btn-toggle-parametros-fiscais" type="button" aria-expanded="true">
+          <i class="pi pi-folder"></i><span>Parâmetros Fiscais</span>
+          <i class="pi pi-chevron-down sidebar-item__chevron"></i>
+        </button>
+
+        <div class="sidebar-submenu" id="submenu-parametros-fiscais">
+          <a class="sidebar-item sidebar-item--sub" href="#"><i class="pi pi-file"></i><span>Consultar DUIMPs do Estado</span></a>
+          <a class="sidebar-item sidebar-item--sub sidebar-item--active" href="#"><i class="pi pi-search"></i><span>Consultar Processos de Importação</span></a>
+          <a class="sidebar-item sidebar-item--sub" href="#"><i class="pi pi-external-link"></i><span>Analisar Processo de Importação</span></a>
+          <a class="sidebar-item sidebar-item--sub" href="#"><i class="pi pi-chart-bar"></i><span>Acompanhamento dos Processos de Importação</span></a>
+          <a class="sidebar-item sidebar-item--sub" href="#"><i class="pi pi-receipt"></i><span>Consultar Emissão de NF de Venda Dentro/Fora do Prazo</span></a>
+        </div>
       </nav>
       <div class="sidebar-footer">
         <hr class="divider">
